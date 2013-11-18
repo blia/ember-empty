@@ -45,6 +45,10 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
                 tasks: ['neuter']
             },
+            stylus: {
+                files: ['<%= yeoman.app %>/styles/{,*/}*.styl'],
+                tasks: ['stylus:server']
+            },
             livereload: {
                 options: {
                     livereload: LIVERELOAD_PORT
@@ -172,6 +176,21 @@ module.exports = function (grunt) {
                 }
             }
         },
+        stylus: {
+            options: {
+                paths: ['app/bower_components'],
+            },
+
+            server: {
+                files: {
+                    '.tmp/styles/style.css': '<%= yeoman.app %>/styles/*.styl'
+                },
+                options: {
+                    linenos: true,
+                    compress: false
+                }
+            }
+        },
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
@@ -280,7 +299,8 @@ module.exports = function (grunt) {
             server: [
                 'emberTemplates',
                 'coffee:dist',
-                'compass:server'
+                'compass:server',
+                'stylus:server'
             ],
             test: [
                 'emberTemplates',

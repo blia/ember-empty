@@ -2,7 +2,8 @@
   "name": "APP_NAME",
   "version": "0.0.1",
   "dependencies": {
-    "ember": "*"
+    "ember": "*",
+    "ember-data": "*"
   },
   "devDependencies": {
     "ember-mocha-adapter": "0.1.1"
